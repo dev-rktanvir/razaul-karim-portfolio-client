@@ -1,0 +1,11 @@
+/* Google Font - Sora */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+/* Tailwind Css & DaisyUI */
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Custom Css */
+body {
+  font-family: 'Sora', sans-serif;
+}
