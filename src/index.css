@@ -5,7 +5,17 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Theme Controls */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #F20101;
+  --color-secondary: #00BC91;
+  --color-accent: #DFDFDFC4;
+}
+
 /* Custom Css */
 body {
   font-family: 'Sora', sans-serif;
+  background: #000;
 }
