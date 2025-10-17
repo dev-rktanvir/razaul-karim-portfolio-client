@@ -6,13 +6,13 @@ const Footer = () => {
 
     const navLinks = [
         { label: 'Home', icon: <FaHome />, href: '/' },
-        { label: 'About', icon: <FaUser />, href: '/about' },
-        { label: 'Projects', icon: <FaProjectDiagram />, href: '/projects' },
+        { label: 'About Me', icon: <FaUser />, href: '/about-me' },
+        { label: 'Latest Projects', icon: <FaProjectDiagram />, href: '/projects' },
         { label: 'Contact', icon: <FaEnvelope />, href: '/contact' },
     ];
 
     return (
-        <footer className="py-6 flex flex-col items-end gap-4">
+        <footer className="py-6 flex md:flex-col items-end gap-4">
             {navLinks.map((item, idx) => {
                 const isActive = location.pathname === item.href;
 

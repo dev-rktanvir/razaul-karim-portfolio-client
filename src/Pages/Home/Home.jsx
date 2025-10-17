@@ -1,19 +1,21 @@
 import { motion } from 'framer-motion';
 import { FaHandPaper } from 'react-icons/fa';
 import AnimatedButton from '../../Components/AnimatedButton/AnimatedButton';
+import SocialLinks from '../../Components/SocialLinks/SocialLinks';
 
 const Home = () => {
     return (
         <div className="hidden lg:flex flex-col md:flex-row min-h-screen w-full text-white">
             {/* Left side */}
-            <div className="w-full md:w-[30%] flex items-center p-0 ml-12">
+            <div className="w-full md:w-[30%] flex flex-col justify-center p-0 ml-12">
                 <div className="rounded-2xl overflow-hidden bg-secondary/10 w-full h-[300px] md:h-auto">
                     <img
                         src="/tanvir24.png"
-                        alt="Subrat"
+                        alt="Rezaul Karim"
                         className="w-full h-full object-cover"
                     />
                 </div>
+                <SocialLinks></SocialLinks>
             </div>
 
             {/* Right side */}

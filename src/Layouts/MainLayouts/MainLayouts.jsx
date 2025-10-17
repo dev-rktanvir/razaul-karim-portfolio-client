@@ -4,11 +4,12 @@ import Footer from '../../Components/Footer/Footer';
 
 const MainLayouts = () => {
     return (
-        <div className='h-screen flex items-center relative'>
-            <Outlet></Outlet>
-            <footer className='absolute top-auto right-0 mr-3'>
+        <div className='flex flex-col items-center relative overflow-y-scroll'>
+
+            <footer className='top-[30%] right-0 fixed mr-3'>
                 <Footer></Footer>
             </footer>
+            <Outlet></Outlet>
         </div>
     );
 };
