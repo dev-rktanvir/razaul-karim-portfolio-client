@@ -18,14 +18,10 @@ const About = () => {
                     <div>
                         <h2 className="text-2xl text-secondary font-semibold mb-4">About Me</h2>
                         <p className=" leading-relaxed mb-4">
-                            Hello! I’m a passionate developer specializing in React and Tailwind CSS. I love creating
-                            beautiful, responsive web applications that provide excellent user experiences. When I’m not coding,
-                            I enjoy learning new technologies and exploring creative design ideas.
+                            Passionate MERN Stack Web Developer with hands-on experience in building scalable, real-world web applications using JavaScript technologies including React, Node.js, MongoDB, and Express. Completed comprehensive training in full-stack development and WordPress/WooCommerce customization.
                         </p>
                         <p className="leading-relaxed">
-                            Hello! I’m a passionate developer specializing in React and Tailwind CSS. I love creating
-                            beautiful, responsive web applications that provide excellent user experiences. When I’m not coding,
-                            I enjoy learning new technologies and exploring creative design ideas.
+                            Successfully delivered multiple projects like multi-vendor e-commerce, car rental, community portal, and parcel delivery systems. Strong problem-solving skills, quick learner, and committed to continuous growth and collaboration in dynamic environments.
                         </p>
                     </div>
                 </div>
