@@ -5,7 +5,7 @@ const socialLinks = [
     {
         name: 'GitHub',
         icon: <FaGithub />,
-        url: 'https://github.com/your-username',
+        url: 'https://github.com/dev-rktanvir',
     },
     {
         name: 'LinkedIn',
@@ -15,7 +15,7 @@ const socialLinks = [
     {
         name: 'Facebook',
         icon: <FaFacebook />,
-        url: 'https://facebook.com/your-profile',
+        url: 'https://www.facebook.com/dev.rktanvir',
     },
 ];
 

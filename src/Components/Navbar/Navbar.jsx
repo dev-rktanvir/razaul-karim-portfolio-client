@@ -1,7 +1,7 @@
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router';
 
-const Footer = () => {
+const Navbar = () => {
     const location = useLocation();
 
     const navLinks = [
@@ -12,7 +12,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="py-6 flex md:flex-col items-end gap-4">
+        <footer className="py-6 flex lg:flex-col items-end gap-4">
             {navLinks.map((item, idx) => {
                 const isActive = location.pathname === item.href;
 
@@ -39,4 +39,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default Navbar;

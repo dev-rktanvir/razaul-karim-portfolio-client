@@ -1,29 +1,47 @@
 import React from "react";
+import { useParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Loading from "../../Components/Loading/Loading";
 
-const dummyProject = {
-  name: "Awesome Project",
-  banner: "https://repository-images.githubusercontent.com/456963513/82528385-a73f-488f-9003-513321283a6b", // Replace with your own image
-  techStack: ["React", "Node.js", "Express", "MongoDB"],
-  description:
-    "This is a sample project demonstrating a full-stack web application with user authentication and CRUD operations.",
-  link: "https://example.com/live-project",
-  repo: "https://github.com/yourusername/awesome-project-client",
-  challenges: `- Handling authentication securely using JWT tokens.
-- Managing state across multiple components efficiently.
-- Optimizing API response times for better performance.`,
-  improvements: `- Implement unit and integration testing.
-- Add support for multiple languages.
-- Improve UI responsiveness and accessibility.`,
-};
 
-const ProjectDetails = ({ project = dummyProject }) => {
+const ProjectDetails = () => {
+  const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
+
+  const {
+    data: project,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["project", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/projects/${id}`);
+      return res.data;
+    },
+    enabled: !!id,
+  });
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
+  if (isError) {
+    return (
+      <div className="text-center py-10 text-red-500">
+        Failed to load project. Error: {error.message}
+      </div>
+    );
+  }
+
   return (
     <section
       className="max-w-4xl mx-auto px-6 py-12"
       aria-labelledby="project-details-heading"
     >
       {/* Banner Image */}
-      {project.banner && (
+      {project?.banner && (
         <img
           src={project.banner}
           alt={`${project.name} Banner`}
@@ -35,37 +53,41 @@ const ProjectDetails = ({ project = dummyProject }) => {
         id="project-details-heading"
         className="text-secondary text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-8 text-center"
       >
-        {project.name}
+        {project?.name}
       </h2>
 
       {/* Main Tech Stack */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold text-secondary mb-3">
-          Main Technology Stack
-        </h3>
-        <div className="flex flex-wrap gap-3">
-          {project.techStack.map((tech, idx) => (
-            <span
-              key={idx}
-              className="bg-primary/20 text-primary text-sm font-medium px-3 py-1 rounded"
-            >
-              {tech}
-            </span>
-          ))}
+      {project?.techStack?.length > 0 && (
+        <div className="mb-8">
+          <h3 className="text-2xl font-semibold text-secondary mb-3">
+            Main Technology Stack
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {project.techStack.map((tech, idx) => (
+              <span
+                key={idx}
+                className="bg-primary/20 text-primary text-sm font-medium px-3 py-1 rounded"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Brief Description */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold text-secondary mb-3">
-          Brief Description
-        </h3>
-        <p className="text-accent text-lg">{project.description}</p>
-      </div>
+      {project?.description && (
+        <div className="mb-8">
+          <h3 className="text-2xl font-semibold text-secondary mb-3">
+            Brief Description
+          </h3>
+          <p className="text-accent text-lg">{project.description}</p>
+        </div>
+      )}
 
       {/* Live Project Link & GitHub Repo */}
       <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center">
-        {project.link && (
+        {project?.link && (
           <a
             href={project.link}
             target="_blank"
@@ -76,20 +98,20 @@ const ProjectDetails = ({ project = dummyProject }) => {
           </a>
         )}
 
-        {project.repo && (
+        {project?.repo && (
           <a
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block border border-secondary text-secondary font-semibold px-6 py-3 rounded hover:bg-secondary/10 transition text-center"
           >
-            GitHub Repository (Client)
+            GitHub Repository
           </a>
         )}
       </div>
 
       {/* Challenges Faced */}
-      {project.challenges && (
+      {project?.challenges && (
         <div className="mb-8">
           <h3 className="text-2xl font-semibold text-secondary mb-3">
             Challenges Faced
@@ -101,7 +123,7 @@ const ProjectDetails = ({ project = dummyProject }) => {
       )}
 
       {/* Potential Improvements */}
-      {project.improvements && (
+      {project?.improvements && (
         <div>
           <h3 className="text-2xl font-semibold text-secondary mb-3">
             Potential Improvements & Future Plans
